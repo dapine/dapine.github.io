@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang=pt>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="A nova (nem tão nova assim) versão da linguagem Python adicionou suporte à type hints. Essa funcionalidade chegou para melhorar o mecanismo de tipagem da linguagem. Sabemos que Python é uma linguagem">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Type Hints em Python 3">
+<meta property="og:url" content="https://dapine.github.io/2019/05/17/Type-Hints-em-Python-3/index.html">
+<meta property="og:site_name" content="Breno Pinheiro">
+<meta property="og:description" content="A nova (nem tão nova assim) versão da linguagem Python adicionou suporte à type hints. Essa funcionalidade chegou para melhorar o mecanismo de tipagem da linguagem. Sabemos que Python é uma linguagem">
+<meta property="og:locale" content="pt-br">
+<meta property="og:updated_time" content="2020-06-16T00:58:07.781Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Type Hints em Python 3">
+<meta name="twitter:description" content="A nova (nem tão nova assim) versão da linguagem Python adicionou suporte à type hints. Essa funcionalidade chegou para melhorar o mecanismo de tipagem da linguagem. Sabemos que Python é uma linguagem">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Type Hints em Python 3</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Início</a></li>
+         
+          <li><a href="/about/">Sobre</a></li>
+         
+          <li><a href="/archives/">Artigos</a></li>
+         
+          <li><a href="/projects/">Projetos</a></li>
+         
+          <li><a href="/photos/">Fotografia</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/08/18/Proposals-e-RFCs/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/04/09/Programacao-Funcional-com-OCaml/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Post Anterior</span>
+      <span id="i-next" class="info" style="display:none;">Post Seguinte</span>
+      <span id="i-top" class="info" style="display:none;">Acima</span>
+      <span id="i-share" class="info" style="display:none;">Compartihar Post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://dapine.github.io/2019/05/17/Type-Hints-em-Python-3/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://dapine.github.io/2019/05/17/Type-Hints-em-Python-3/&text=Type Hints em Python 3"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://dapine.github.io/2019/05/17/Type-Hints-em-Python-3/&title=Type Hints em Python 3"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://dapine.github.io/2019/05/17/Type-Hints-em-Python-3/&is_video=false&description=Type Hints em Python 3"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Type Hints em Python 3&body=Check out this article: https://dapine.github.io/2019/05/17/Type-Hints-em-Python-3/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://dapine.github.io/2019/05/17/Type-Hints-em-Python-3/&title=Type Hints em Python 3"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://dapine.github.io/2019/05/17/Type-Hints-em-Python-3/&title=Type Hints em Python 3"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://dapine.github.io/2019/05/17/Type-Hints-em-Python-3/&title=Type Hints em Python 3"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://dapine.github.io/2019/05/17/Type-Hints-em-Python-3/&title=Type Hints em Python 3"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://dapine.github.io/2019/05/17/Type-Hints-em-Python-3/&name=Type Hints em Python 3&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Type-Annotations"><span class="toc-number">1.</span> <span class="toc-text">Type Annotations</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Type-Aliases"><span class="toc-number">2.</span> <span class="toc-text">Type Aliases</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Type Hints em Python 3
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Breno Pinheiro</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-05-17T17:40:28.000Z" itemprop="datePublished">2019-05-17</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>A nova (nem tão nova assim) versão da linguagem Python adicionou suporte à type hints. Essa funcionalidade chegou para melhorar o mecanismo de tipagem da linguagem. Sabemos que Python é uma linguagem dinamicamente tipada e que há vários debates sobre os benefícios e maleficios desse sistema de tipos nas comunidades de pessoas desenvolvedoras. Há os que são favoráveis a tipos estáticos e outros que são aos tipos dinâmicos.<br>Quando falamos de tipos estáticos, estamos dizendo que o compilador ou interpretador conhece todos os tipos que estão no seu código antes de executar o programa, assim, ele pode checar se há alguma inconsistência entre os tipos. Caso sim, o compilador retornará um erro e não executará o programa. Com tipos dinâmicos isso não acontece. O compilador/interpretador não faz nenhuma checagem inicial dos tipos e seus relacionamentos, executando o programa imediatamente. Caso a pessoa tenha cometido alguma inconsistência entre tipos, ela pode não ser avisada pelo compilador/interpretador e o programa provavelmente não funcionará da maneira pretendida.<br>Digamos que você acidentalmente quis somar o número <code>1</code> com a string <code>&quot;1&quot;</code>. Sabemos que <code>1</code> é do tipo numeral e que <code>&quot;1&quot;</code> é do tipo textual.<br>Logo, não faz sentido somar um número com um texto. Vamos ver como linguagens estáticas e dinâmicas se comportam com esse problema?</p>
+<p>Em Haskell (estaticamente tipada)<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Prelude&gt; 1 + &quot;1&quot;</span><br><span class="line"></span><br><span class="line">&lt;interactive&gt;:2:1: error:</span><br><span class="line">    • No instance for (Num [Char]) arising from a use of ‘+’</span><br><span class="line">        • In the expression: 1 + &quot;1&quot;</span><br><span class="line">              In an equation for ‘it’: it = 1 + &quot;1&quot;</span><br></pre></td></tr></table></figure></p>
+<p>Em JavaScript (dinamicamente tipada)<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt; 1 + &quot;1&quot;</span><br><span class="line">&apos;11&apos;</span><br></pre></td></tr></table></figure></p>
+<p>Viu como as linguagens retornam coisas diferentes? O JavaScript retornou um resultado errado pois ela faz a <a href="https://pt.wikipedia.org/wiki/Convers%C3%A3o_de_tipos" target="_blank" rel="noopener">coerção de tipos</a> implícita entre strings e números. Felizmente Python possui um sistema de tipos mais robusto, mas ainda deixa passar alguns erros.</p>
+<p>Python2 (dinamicamente tipada)<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; 1 + &quot;1&quot;</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">  TypeError: unsupported operand type(s) for +: &apos;int&apos; and &apos;str&apos;</span><br></pre></td></tr></table></figure></p>
+<p>Mas se fizermos:<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; [1] * -1</span><br><span class="line">[]</span><br><span class="line"># Tentamos multiplicar uma lista com um número negativo, mas não fomos avisados do erro :(</span><br></pre></td></tr></table></figure></p>
+<p>Então surge nossa salvação para esse problema: Type Hints!<br>Com type hints, podemos dizer explicitamente a qual tipo tal dado pertence. Assim ajudamos o interpretador a executar o código corretamente, pois ele não precisa “adivinhar” o tipo, e, caso haja alguma inconsistência, ela será avisada ao invés de fazer uma coerção ou qualquer outro malabarismo que interpretadores podem fazer.</p>
+<h2 id="Type-Annotations"><a href="#Type-Annotations" class="headerlink" title="Type Annotations"></a>Type Annotations</h2><p>Com anotações de tipos, dizemos explicitamente qual tipo variáveis, funções, parâmetros pertencem. Isso permite que se escreva códigos auto-documentáveis, mais legíveis e até mesmo usar <a href="http://wiki.c2.com/?TypeChecking" target="_blank" rel="noopener">type-checkers</a> separados da plataforma oficial Python, como o <a href="http://mypy-lang.org/" target="_blank" rel="noopener">mypy</a>. Versões Python 3.5 e anteriores suportam somente <a href="https://www.python.org/dev/peps/pep-3107/" target="_blank" rel="noopener">anotação de funcões</a>. A partir da versão 3.6, temos suporte a <a href="https://www.python.org/dev/peps/pep-0526/" target="_blank" rel="noopener">anotação de variáveis</a>.<br>As anotações são feitas da seguinte forma:<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Anotação de variável</span><br><span class="line">username: str</span><br><span class="line"></span><br><span class="line"># Anotação de funções</span><br><span class="line">def circle_area(radius: float) -&gt; float:</span><br><span class="line">    from math import pi</span><br><span class="line">    return pi * (radius ** 2)</span><br><span class="line"></span><br><span class="line">def say_hi(username: str) -&gt; None:</span><br><span class="line">    print(&apos;Hi &apos; + username)</span><br></pre></td></tr></table></figure></p>
+<h2 id="Type-Aliases"><a href="#Type-Aliases" class="headerlink" title="Type Aliases"></a>Type Aliases</h2><p>Agora imagine que você tem uma função que recebe tipos mais complexos…<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">from typing import List, Tuple</span><br><span class="line"></span><br><span class="line">def rate_users(users: List[str], rates: List[int]) -&gt; List[Tuple[str, int]]:</span><br><span class="line">    return list(zip(users, rates))</span><br></pre></td></tr></table></figure></p>
+<p>O código acima parece bem feio e deselegante, né? Ainda bem que temos type aliases para simplificar e deixar nosso código lindoso.<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">from typing import List, Tuple</span><br><span class="line"></span><br><span class="line">UserList = List[str]</span><br><span class="line">Rates = List[int]</span><br><span class="line">RatedUsers = List[Tuple[str, int]]</span><br><span class="line"></span><br><span class="line">def rate_users(users: UserList, rates: Rates) -&gt; RatedUsers:</span><br><span class="line">    return list(zip(users, rates))</span><br></pre></td></tr></table></figure></p>
+<p>Viu como nosso código ficou mais expressivo? Type aliases servem justamente para isso: dar apelidos para tipos (geralmente mais complexos) com o objetivo de simplificar ou expressar melhor nossas intenções.<br>Para o interpretador, esses dois códigos são equivalentes, mas para nossos olhos humanos a segunda versão é bem melhor.</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Início</a></li>
+         
+          <li><a href="/about/">Sobre</a></li>
+         
+          <li><a href="/archives/">Artigos</a></li>
+         
+          <li><a href="/projects/">Projetos</a></li>
+         
+          <li><a href="/photos/">Fotografia</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Type-Annotations"><span class="toc-number">1.</span> <span class="toc-text">Type Annotations</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Type-Aliases"><span class="toc-number">2.</span> <span class="toc-text">Type Aliases</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://dapine.github.io/2019/05/17/Type-Hints-em-Python-3/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://dapine.github.io/2019/05/17/Type-Hints-em-Python-3/&text=Type Hints em Python 3"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://dapine.github.io/2019/05/17/Type-Hints-em-Python-3/&title=Type Hints em Python 3"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://dapine.github.io/2019/05/17/Type-Hints-em-Python-3/&is_video=false&description=Type Hints em Python 3"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Type Hints em Python 3&body=Check out this article: https://dapine.github.io/2019/05/17/Type-Hints-em-Python-3/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://dapine.github.io/2019/05/17/Type-Hints-em-Python-3/&title=Type Hints em Python 3"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://dapine.github.io/2019/05/17/Type-Hints-em-Python-3/&title=Type Hints em Python 3"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://dapine.github.io/2019/05/17/Type-Hints-em-Python-3/&title=Type Hints em Python 3"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://dapine.github.io/2019/05/17/Type-Hints-em-Python-3/&title=Type Hints em Python 3"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://dapine.github.io/2019/05/17/Type-Hints-em-Python-3/&name=Type Hints em Python 3&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Compartilhar</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2020 Breno Pinheiro
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Início</a></li>
+         
+          <li><a href="/about/">Sobre</a></li>
+         
+          <li><a href="/archives/">Artigos</a></li>
+         
+          <li><a href="/projects/">Projetos</a></li>
+         
+          <li><a href="/photos/">Fotografia</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang=pt>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Um belo dia você está trabalhando com sua tecnologia favorita. Após vários anos de experiência, você enxerga a possibilidade de melhorar aquele processo ou uso daquela tecnologia. Então, você projeta">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Proposals e RFCs">
+<meta property="og:url" content="https://dapine.github.io/2019/08/18/Proposals-e-RFCs/index.html">
+<meta property="og:site_name" content="Breno Pinheiro">
+<meta property="og:description" content="Um belo dia você está trabalhando com sua tecnologia favorita. Após vários anos de experiência, você enxerga a possibilidade de melhorar aquele processo ou uso daquela tecnologia. Então, você projeta">
+<meta property="og:locale" content="pt-br">
+<meta property="og:updated_time" content="2020-06-16T00:58:07.781Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Proposals e RFCs">
+<meta name="twitter:description" content="Um belo dia você está trabalhando com sua tecnologia favorita. Após vários anos de experiência, você enxerga a possibilidade de melhorar aquele processo ou uso daquela tecnologia. Então, você projeta">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Proposals e RFCs</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Início</a></li>
+         
+          <li><a href="/about/">Sobre</a></li>
+         
+          <li><a href="/archives/">Artigos</a></li>
+         
+          <li><a href="/projects/">Projetos</a></li>
+         
+          <li><a href="/photos/">Fotografia</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2019/05/17/Type-Hints-em-Python-3/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Post Anterior</span>
+      <span id="i-next" class="info" style="display:none;">Post Seguinte</span>
+      <span id="i-top" class="info" style="display:none;">Acima</span>
+      <span id="i-share" class="info" style="display:none;">Compartihar Post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://dapine.github.io/2019/08/18/Proposals-e-RFCs/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://dapine.github.io/2019/08/18/Proposals-e-RFCs/&text=Proposals e RFCs"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://dapine.github.io/2019/08/18/Proposals-e-RFCs/&title=Proposals e RFCs"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://dapine.github.io/2019/08/18/Proposals-e-RFCs/&is_video=false&description=Proposals e RFCs"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Proposals e RFCs&body=Check out this article: https://dapine.github.io/2019/08/18/Proposals-e-RFCs/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://dapine.github.io/2019/08/18/Proposals-e-RFCs/&title=Proposals e RFCs"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://dapine.github.io/2019/08/18/Proposals-e-RFCs/&title=Proposals e RFCs"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://dapine.github.io/2019/08/18/Proposals-e-RFCs/&title=Proposals e RFCs"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://dapine.github.io/2019/08/18/Proposals-e-RFCs/&title=Proposals e RFCs"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://dapine.github.io/2019/08/18/Proposals-e-RFCs/&name=Proposals e RFCs&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Proposals e RFCs
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Breno Pinheiro</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-08-18T16:42:48.000Z" itemprop="datePublished">2019-08-18</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>Um belo dia você está trabalhando com sua tecnologia favorita. Após vários anos de experiência, você enxerga a possibilidade de melhorar aquele processo ou uso daquela tecnologia. Então, você projeta essa ideia e percebe que ela realmente funciona e pode trazer benefícios. Você está tão feliz e tem tanto orgulho da sua solução, que quer compartilhar isso para outros usuários da sua tecnologia favorita. Para isso, você envia emails para os líderes de desenvolvimento da sua tecnologia, relatando as melhorias que sua proposta pode oferecer. Acontece que eles estão tão ocupados que nem ao menos lêem seu email. Como você não faz parte do time de desenvolvimento, também não há a possibilidade de distribuir essa melhoria para a comunidade, então sua solução cai no esquecimento e nunca será vista ou considerada.</p>
+<p>Esse é um acontecimento corriqueiro em comunidades open-source, um bom exemplo disso é o <a href="https://news.ycombinator.com/item?id=7287668" target="_blank" rel="noopener">caso do NeoVim</a>, que foi um fork do Vim criado supostamente por causa da rejeição de patches. Comunidades sem um mecanismo de propostas estão dependendo do alinhamento de pensamento, boa vontade ou disponibilidade dos core developers para melhorias ou mudanças sugeridas por usuários comuns. Entretanto, existem meios de contornar essa limitição, um deles são os proposals. Proposals, em português: propostas, como o nome diz, são meios em que usuários podem propor algum tipo de solução, mudança ou melhoria de uma tecnologia. Idealmente elas podem ser feitas por qualquer membro da comunidade. Essa pessoa tem a ideia da solução, escreve um documento contendo toda explicação detalhada sobre o design de sua ideia, suas implicações, seus pontos positivos e negativos, sua implementação, sua relevância, etc. Então, esse documento é submetido como uma proposta, geralmente em algum local centralizado onde todos os membros da comunidade possuem acesso, como: Issues do GitHub, lista de emails, site da tecnologia. Após a proposta ter sido publicada, outros membros da comunidade poderão vê-la e fazer comentários sobre, criando uma discussão sobre a viabilidade da sua proposta ser incorporada. Inevitavelmente, essa discussão chegará a algum líder da comunidade que será responsável por revisá-la, então, baseado nas opiniões dos usuários e na necessidade da comunidade, a proposta pode ser aceita ou rejeitada.</p>
+<p>Além de servirem como propostas de ideias, elas podem servir como guias para comunidade e padrões para especificações. Exemplos disso são os <a href="https://pt.wikipedia.org/wiki/Request_for_Comments" target="_blank" rel="noopener">RFCs (Request for Comments)</a> da IETF, que são padrões de protocolos e comunicação na internet; <a href="https://www.python.org/dev/peps/" target="_blank" rel="noopener">PEPs (Python Enhancement Proposals)</a> que são propostas de melhoria da comunidade Python; <a href="https://www.ecma-international.org/memento/tc39-rf-tg.htm" target="_blank" rel="noopener">TC39</a> são propostas para especificação da linguagem ECMAScript/JavaScript; Existem até mesmo <a href="https://en.wikipedia.org/wiki/April_Fools%27_Day_Request_for_Comments" target="_blank" rel="noopener">RFCs de 1º de abril</a> ;P</p>
+<p>Proposals são muito importantes para constante melhoria de tecnologias e manter a comunidade engajada. Isso faz com que todos os usuários possam participar ativamente das decisões e rumos que a tecnologia tomará. Há uma diminuição na barreira de contribuição, onde tanto o iniciante como o líder máximo do projeto podem contribuir. Diferentes opiniões de diferentes pessoas são levadas em consideração ao invés de uma única pessoa, ou grupo de pessoas com um mesmo pensamento, assim evitando elitismo e centralização de ideias.</p>
+<p>Propostas são ótimas, pois estabelece um diálogo onde as partes devem ser ouvidas. Não somente no ambiente técnico, mas em todos, propostas são melhores e mais saudáveis que imposições. Proponha mais e imponha menos.</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Início</a></li>
+         
+          <li><a href="/about/">Sobre</a></li>
+         
+          <li><a href="/archives/">Artigos</a></li>
+         
+          <li><a href="/projects/">Projetos</a></li>
+         
+          <li><a href="/photos/">Fotografia</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://dapine.github.io/2019/08/18/Proposals-e-RFCs/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://dapine.github.io/2019/08/18/Proposals-e-RFCs/&text=Proposals e RFCs"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://dapine.github.io/2019/08/18/Proposals-e-RFCs/&title=Proposals e RFCs"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://dapine.github.io/2019/08/18/Proposals-e-RFCs/&is_video=false&description=Proposals e RFCs"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Proposals e RFCs&body=Check out this article: https://dapine.github.io/2019/08/18/Proposals-e-RFCs/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://dapine.github.io/2019/08/18/Proposals-e-RFCs/&title=Proposals e RFCs"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://dapine.github.io/2019/08/18/Proposals-e-RFCs/&title=Proposals e RFCs"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://dapine.github.io/2019/08/18/Proposals-e-RFCs/&title=Proposals e RFCs"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://dapine.github.io/2019/08/18/Proposals-e-RFCs/&title=Proposals e RFCs"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://dapine.github.io/2019/08/18/Proposals-e-RFCs/&name=Proposals e RFCs&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Compartilhar</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2020 Breno Pinheiro
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Início</a></li>
+         
+          <li><a href="/about/">Sobre</a></li>
+         
+          <li><a href="/archives/">Artigos</a></li>
+         
+          <li><a href="/projects/">Projetos</a></li>
+         
+          <li><a href="/photos/">Fotografia</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
